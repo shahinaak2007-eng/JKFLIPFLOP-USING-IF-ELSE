@@ -34,15 +34,100 @@ The maximum possible groupings of adjacent ones are already shown in the figure.
 
 **Procedure**
 
-/* write all the steps invloved */
+Step 1: Create New Project
+
+Open Quartus II.
+
+Click File → New Project Wizard.
+
+Select a folder, give project name JK_FlipFlop, click Next.
+
+Select device (or keep default) → Finish.
+
+Step 2: Create Block Diagram
+
+Click File → New → Block Diagram/Schematic File.
+
+Save the file as jk_ff.bdf.
+
+Step 3: Insert JK Flip-Flop
+
+Double-click inside the diagram.
+
+Select Primitives → Storage → Flipflop.
+
+Choose JK Flip-Flop and click OK.
+
+Place it on the schematic.
+
+Step 4: Add Input & Output Pins
+
+Insert Input pins and name them: Insert Output pins and name them: Step 5: Make Connections
+
+Connect J, K, CLK to the JK flip-flop inputs.
+
+Connect Q and Q̅ to output pins.
+
+Save the schematic.
+
+Step 6: Compile the Design
+
+Click Processing → Start Compilation.
+
+Ensure Compilation Successful message appears.
+
+Step 7: Create Simulation File
+
+Click File → New → University Program VWF.
+
+Go to Edit → Insert Node or Bus.
+
+Select J, K, CLK, Q, QBAR.
+
+Set clock waveform for CLK.
+
+Apply input values for J and K.
+
+Step 8: Run Simulation
+
+Click Simulation → Run Functional Simulation.
+
+Observe the outputs Q and Q̅.
+
+Verify output with truth table.
 
 **PROGRAM**
 
-/* Program for flipflops and verify its truth table in quartus using Verilog programming. Developed by: RegisterNumber:
-*/
+```c
+module jkff(j,k,clk,q,qbar);
+input j,k,clk;
+output reg q,qbar;
+initial 
+begin
+q=1'b0;
+q=1'b1;
+end 
+
+always @(posedge clk)
+begin 
+q<=(j&~q)|(~k&q);
+qbar<=~q;
+end
+endmodule
+```
+
+Name : Shahina A 
+
+Register Number : 212225040396
 
 **RTL LOGIC FOR FLIPFLOPS**
 
+<img width="1280" height="720" alt="526559273-969a12ce-3059-4372-bb0b-3d0e7054a790" src="https://github.com/user-attachments/assets/5ef53ce5-6a4c-4665-bcc0-4b6ce997bbb5" />
+
 **TIMING DIGRAMS FOR FLIP FLOPS**
 
-**RESULTS**
+<img width="1600" height="850" alt="526559443-08325435-e0fa-4f1e-8a82-329dfaf31081" src="https://github.com/user-attachments/assets/9fdf8f46-7fe6-4c80-ac7e-dee7eb5fa45f" />
+
+**RESULT**
+
+The JK Flip-Flop was successfully designed and simulated using Quartus II and its truth table is verified.
